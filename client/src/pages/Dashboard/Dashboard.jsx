@@ -1,4 +1,16 @@
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    BarElement,
+    Title,
+    Tooltip,
+    // Legend,
+  } from 'chart.js';
+import { format } from 'date-fns';
 import React from 'react';
+import { Bar } from 'react-chartjs-2';
 import { useState, useEffect } from 'react';
 import Home from "../Home/Home";
 import axios from 'axios';
@@ -8,13 +20,35 @@ import "./Dashboard.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    BarElement,
+    Title,
+    Tooltip,
+    // Legend
+);
+
+const options = {
+    responsive: true,
+    plugins: {
+        legend: {
+            position: 'top',
+        },
+    },
+    ticks: {
+        precision:0
+    }
+};
+
 function Dashboard() {
 
     const [cashList, setCashList] = useState([]);
 
     const [inKindList, setInKindList] = useState([]);
 
-    const navigate = new useNavigate();
+    const [activeTab, setActiveTab] = useState('cash-approve');
 
     useEffect(() => {
         axios.get("http://localhost:3001/cash", { withCredentials: true }).then((response) => {
@@ -46,6 +80,8 @@ function Dashboard() {
         });
     }, []);
 
+    const toggleTab = (event) => setActiveTab(event.currentTarget.id);
+
     const cashApprove = cashList.filter((val) => val.request === true );
     const countCashApprove = cashApprove.length;
 
@@ -58,38 +94,116 @@ function Dashboard() {
     const inKindDisApprove = inKindList.filter((val) => val.request === false );
     const countInKindDisapprove = inKindDisApprove.length;
 
+    const navigate = new useNavigate();
+
+    const getData = (data, label) => {
+        const months = {
+            January: 0,
+            February: 0,
+            March: 0,
+            April: 0,
+            May: 0,
+            June: 0,
+            July: 0,
+            August: 0,
+            September: 0,
+            October: 0,
+            November: 0,
+            December: 0,
+        };
+
+        if (data && data.length > 0) {
+            data.forEach(post => {
+                // Check the month of createdAt field, convert date using date-fns https://date-fns.org/v2.14.0/docs/format
+                const monthName = format(new Date(post.createdAt), 'LLLL');
+
+                if (Object.keys(months).includes(monthName)) {
+                    months[monthName] += 1;
+                }
+            });
+        }
+
+        return {
+            labels: Object.keys(months),
+            datasets: [{
+                label,
+                data: Object.values(months || []),
+                borderColor: 'black',
+                backgroundColor: 'red',
+            }],
+        }
+    };
+
+    const getChartData = () => {
+        switch (activeTab) {
+            case 'cash-disapprove':
+                return getData(cashDisapprove, 'Cash Disapprove');
+            case 'inkind-approve':
+                return getData(inKindApprove, 'In Kind Approve');
+            case 'inkind-disapprove':
+                return getData(inKindDisApprove, 'In Kind Disapprove');
+            default:
+                return getData(cashApprove, 'Cash Approve');
+
+        }
+    };
+
     return (
         <div>
             <Home/>
 
-            <div class="row">
-                <div class="column">
-                    <div class="card">
+            <div className="row">
+                <div className="column">
+                    <div
+                        className="card"
+                        onClick={toggleTab}
+                        id="cash-approve"
+                        style={{ border: activeTab === 'cash-approve' ? '2px solid red' : 'none' }}
+                    >
                     <h3 className="cardHeader">CASH APPROVE: </h3>
                     <p className="count">{ countCashApprove }</p>
                     </div>
                 </div>
 
-                <div class="column">
-                    <div class="card">
+                <div className="column">
+                    <div
+                        className="card"
+                        onClick={toggleTab}
+                        id="cash-disapprove"
+                        style={{ border: activeTab === 'cash-disapprove' ? '2px solid red' : 'none' }}
+                    >
                     <h3 className="cardHeader">CASH DISAPPROVE: </h3>
                     <p className="count">{ countCashDisapprove }</p>
                     </div>
                 </div>
-                
-                <div class="column">
-                    <div class="card">
+
+                <div className="column">
+                    <div
+                        className="card"
+                        onClick={toggleTab}
+                        id="inkind-approve"
+                        style={{ border: activeTab === 'inkind-approve' ? '2px solid red' : 'none' }}
+                    >
                     <h3 className="cardHeader">IN KIND APPROVE:</h3>
                     <p className="count">{ countInKindApprove }</p>
                     </div>
                 </div>
-                
-                <div class="column">
-                    <div class="card">
+
+                <div className="column">
+                    <div
+                        className="card"
+                        onClick={toggleTab}
+                        id="inkind-disapprove"
+                        style={{ border: activeTab === 'inkind-disapprove' ? '2px solid red' : 'none' }}
+                    >
                     <h3 className="cardHeader">IN KIND DISAPPROVE:</h3>
                     <p className="count">{ countInKindDisapprove }</p>
                     </div>
                 </div>
+            </div>
+
+            <div style={{ marginTop: 40 }}>
+                <Bar options={options} data={getChartData()} />
             </div>
 
             <ToastContainer

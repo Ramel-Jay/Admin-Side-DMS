@@ -1,11 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const { Cash } = require('../models');
+const { Cash, sequelize } = require('../models');
 const { validateToken } = require("../middleware/JWT");
 
 
 router.get("/",validateToken ,async (req, res) => {
-    const listOfPost = await Cash.findAll();
+    const listOfPost = await Cash.findAll({
+        where: sequelize.where(sequelize.fn('YEAR', sequelize.col('createdAt')), new Date().getFullYear())
+    });
+
     res.json(listOfPost);
 });
 

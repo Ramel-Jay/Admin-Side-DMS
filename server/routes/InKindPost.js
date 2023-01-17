@@ -1,10 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const { InKind } = require('../models');
+const { InKind, sequelize } = require('../models');
 const { validateToken } = require("../middleware/JWT");
 
 router.get("/", validateToken,async (req, res) => {
-    const listOfInKindPost = await InKind.findAll();
+    const listOfInKindPost = await InKind.findAll({
+        where: sequelize.where(sequelize.fn('YEAR', sequelize.col('createdAt')), new Date().getFullYear())
+    });
     res.json(listOfInKindPost);
 });
 
