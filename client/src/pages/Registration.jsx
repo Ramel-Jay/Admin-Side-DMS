@@ -17,7 +17,6 @@ function Registration() {
         email: "",
         number: "",
         adminType: "",
-        image: null,
         username: "",
         password: "",
     };

@@ -41,6 +41,7 @@ function InKindDisapprove() {
             <div className="pending-request-container">
                 <p style={{ paddingLeft:"2vw" }}>Pending Request: { countedItems }</p>
             </div>
+            <br></br>
             <h2 className="headerTitle">IN KIND DISAPPROVE</h2>
             <FaSearch className="searchIcon"/>
             <input

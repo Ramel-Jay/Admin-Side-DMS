@@ -14,7 +14,7 @@ const validateToken = (req, res, next) => {
             req.user = validToken;
 
             if(validToken){
-                console.log("user authenticated");
+                console.log("User Authenticated");
                 req.authenticated = true;
                 return next();
             }
@@ -22,7 +22,7 @@ const validateToken = (req, res, next) => {
             return res.json({error: err});
         }
     }else{
-        return res.json({error: "User not authenticated"});
+        return res.json({error: "User not Authenticated"});
     }
 }
 

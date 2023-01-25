@@ -29,14 +29,14 @@ function CashUpdateRequest() {
             )
             .then((response) => {
                 if(response.data.error) {
-                    alert("Field to approve");
+                    alert("Failed to approve");
                 }else{
                     setCashObject({ ...cashObject, request: request, username: username });
                     alert("Request Approve");
                 }
             });
         }   else {
-                alert("Field to update the request please contact the dev");
+                alert("Failed to update the request please contact the dev");
             }
     }
 
@@ -51,14 +51,14 @@ function CashUpdateRequest() {
             }, { withCredentials: true }
             ).then((response) => {
                 if(response.data.error){
-                    alert("Field to approve");
+                    alert("Failed to approve");
                 }else{
                     setCashObject({ ...cashObject, request: disapproved, username: username });
-                    alert("request Disapprove");
+                    alert("Request Disapprove");
                 }
             });
         } else {
-            alert("Field to Update the request please contact the dev");
+            alert("Failed to Update the request please contact the dev");
         }
     }
 

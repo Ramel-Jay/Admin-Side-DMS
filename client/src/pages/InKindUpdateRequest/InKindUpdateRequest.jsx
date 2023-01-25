@@ -43,7 +43,7 @@ function InKindRequestApprove() {
             }, { withCredentials: true }
             ).then((response) => {
                 if(response.data.error){
-                    alert("Flied to approve your request");
+                    alert("Failed to approve your request");
                 }else {
                     emailjs.send('service_3x1ks7h', 'template_2g3ikvp', templateParams, 'yNNQzsJGkNJ05bIey')
                     .then(function(response) {
@@ -72,12 +72,12 @@ function InKindRequestApprove() {
             }, { withCredentials: true }
             ).then((response) => {
                 if(response.data.error){
-                    alert("Flied to Disapprove");
+                    alert("Failed to Disapprove");
                 }else{
                     emailjs.send('service_3x1ks7h', 'template_je53q6d', templateParams, 'yNNQzsJGkNJ05bIey')
                     .then(function(response) {
                         setInKindObject({ ...inKindObject, request: disapproved, username: username });
-                        alert("request Disapprove");
+                        alert("Request Disapprove");
                         navigate("/inkinddisapprove");
                     }, function(error) {
                         console.log('FAILED...', error);

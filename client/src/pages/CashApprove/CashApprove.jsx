@@ -46,6 +46,7 @@ return (
         <div className="approve-request-container">
             <p style={{ paddingLeft:"2vw" }} >Approve Requests: { countItems }</p>
         </div>
+        <br></br>
         <h2 className="headerTitle">CASH APPROVE</h2>
         <FaSearch className="searchIcon"/>
             <input
@@ -64,7 +65,7 @@ return (
                         <th>Last Name</th>
                         <th>Amount</th>
                         <th>Transaction ID</th>
-                        <th>Request</th>
+                        <th>Status</th>
                         <th>Approve By</th>
                         <th>Edit</th>
                     </tr>

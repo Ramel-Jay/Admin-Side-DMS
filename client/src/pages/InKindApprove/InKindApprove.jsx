@@ -44,6 +44,7 @@ function InKindApprove(){
             <div className="approve-request-container">
                 <p style={{ paddingLeft:"2vw" }} >Approve Request: { countedItems }</p>
             </div>
+            <br></br>
             <h2 className="headerTitle">IN KIND APPROVE</h2>
             <FaSearch className="searchIcon"/>
             <input
@@ -64,7 +65,7 @@ function InKindApprove(){
                         <th>Quantity</th>
                         <th>Rider Name</th>
                         <th>Rider Number</th>
-                        <th>Request</th>
+                        <th>Status</th>
                         <th>Approve By</th>
                         <th>Edit</th>
                     </tr>

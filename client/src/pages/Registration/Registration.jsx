@@ -16,7 +16,6 @@ function Registration() {
     const [email, setEmail] = useState("");
     const [number, setNumber] = useState("");
     const [adminType, setAdminType] = useState("");
-    const [image, setImage] = useState(null);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
@@ -33,7 +32,6 @@ function Registration() {
         data.append("email", email);
         data.append("number", number);
         data.append("adminType", adminType);
-        data.append("image", image);
         data.append("username", username);
         data.append("password", password);
 
@@ -43,7 +41,7 @@ function Registration() {
                 console.log(response.data.error);
                 alert("Invalid Input");
             }else{
-                alert("congrats gwapo");
+                alert("Registration Complete");
                 navigate("/");
             }
         });
@@ -53,7 +51,8 @@ function Registration() {
     return (
         <div className="centerForm">
             <Home/>
-            <h2 className='headerTitle'>REGISTRATION FORM</h2>
+            <br></br>
+            <h2 className='headerTitle'>ACCOUNT REGISTRATION FORM</h2>
             <form onSubmit={onSubmit} className="registrationForm">
                 <div className='column'>
                     <div className="input-field">
@@ -136,14 +135,7 @@ function Registration() {
                         <label htmlFor='adminType'>Admin Type</label>
                     </div>
                     
-                    <div className="input-field">
-                        <input 
-                            type="file" 
-                            id="image"
-                            onChange={(event) => setImage(event.target.files[0])}
-                            required
-                        />
-                    </div>
+                    
                     
                     <div className='input-field'>
                         <input 

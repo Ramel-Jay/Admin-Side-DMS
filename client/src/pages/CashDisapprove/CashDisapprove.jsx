@@ -44,7 +44,7 @@ return (
             <div className="pending-request-container">
                 <p style={{ paddingLeft:"2vw" }}>Pending Request: { countItems }</p>
             </div>
-
+            <br></br>
             <h2 className="headerTitle">CASH DISAPPROVE</h2>
             <FaSearch className="searchIcon"/>
             <input
@@ -65,9 +65,9 @@ return (
                             <th>Last Name</th>
                             <th>Amount</th>
                             <th>Transaction ID</th>
-                            <th>Disapprove By</th>
                             <th>Status</th>
-                            <th>Approve</th>
+                            <th>Disapprove By</th>
+                            <th>Edit</th>
                         </tr>
                     </thead>
                     <tbody className="tblBody">
@@ -85,8 +85,8 @@ return (
                                         <td>{value.lastName}</td>
                                         <td>{value.amount}</td>
                                         <td>{value.transactionID}</td>
-                                        <td>{value.username}</td>
                                         <td>{value.request}Disapprove</td>
+                                        <td>{value.username}</td>
                                         <td type='submit' onClick={() => {navigate(`/cashupdaterequest/${value.id}`)}}><BsFillCheckCircleFill  type='submit' onClick={() => {navigate(`/cashupdaterequest/${value.id}`)}}/></td>
                                     </tr>
                                 )

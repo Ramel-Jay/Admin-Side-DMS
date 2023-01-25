@@ -19,7 +19,7 @@ import "./Dashboard.css";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+ 
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -122,14 +122,14 @@ function Dashboard() {
                 }
             });
         }
-
+        
         return {
             labels: Object.keys(months),
             datasets: [{
                 label,
                 data: Object.values(months || []),
                 borderColor: 'black',
-                backgroundColor: 'red',
+                backgroundColor: 'blue',
             }],
         }
     };
@@ -158,7 +158,7 @@ function Dashboard() {
                         className="card"
                         onClick={toggleTab}
                         id="cash-approve"
-                        style={{ border: activeTab === 'cash-approve' ? '2px solid red' : 'none' }}
+                        style={{ border: activeTab === 'cash-approve' ? '2px solid blue' : 'none' }}
                     >
                     <h3 className="cardHeader">CASH APPROVE: </h3>
                     <p className="count">{ countCashApprove }</p>
@@ -170,7 +170,7 @@ function Dashboard() {
                         className="card"
                         onClick={toggleTab}
                         id="cash-disapprove"
-                        style={{ border: activeTab === 'cash-disapprove' ? '2px solid red' : 'none' }}
+                        style={{ border: activeTab === 'cash-disapprove' ? '2px solid blue' : 'none' }}
                     >
                     <h3 className="cardHeader">CASH DISAPPROVE: </h3>
                     <p className="count">{ countCashDisapprove }</p>
@@ -182,7 +182,7 @@ function Dashboard() {
                         className="card"
                         onClick={toggleTab}
                         id="inkind-approve"
-                        style={{ border: activeTab === 'inkind-approve' ? '2px solid red' : 'none' }}
+                        style={{ border: activeTab === 'inkind-approve' ? '2px solid blue' : 'none' }}
                     >
                     <h3 className="cardHeader">IN KIND APPROVE:</h3>
                     <p className="count">{ countInKindApprove }</p>
@@ -194,7 +194,7 @@ function Dashboard() {
                         className="card"
                         onClick={toggleTab}
                         id="inkind-disapprove"
-                        style={{ border: activeTab === 'inkind-disapprove' ? '2px solid red' : 'none' }}
+                        style={{ border: activeTab === 'inkind-disapprove' ? '2px solid blue' : 'none' }}
                     >
                     <h3 className="cardHeader">IN KIND DISAPPROVE:</h3>
                     <p className="count">{ countInKindDisapprove }</p>

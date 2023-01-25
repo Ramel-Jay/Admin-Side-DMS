@@ -24,7 +24,7 @@ function InKindRequestApprove() {
             }, { withCredentials: true }
             ).then((response) => {
                 if(response.data.error){
-                    alert("Flied to approve your request");
+                    alert("Failed to approve your request");
                 }else {
                     setInKindObject({ ...inKindObject, request: request, username: username});
                     alert("Request Approved");
@@ -46,14 +46,14 @@ function InKindRequestApprove() {
             }, { withCredentials: true }
             ).then((response) => {
                 if(response.data.error){
-                    alert("Flied to Disapprove");
+                    alert("Failed to Disapprove");
                 }else{
                     setInKindObject({ ...inKindObject, request: disapproved, username: username });
-                    alert("request Disapprove");
+                    alert("Request Disapprove");
                 }
             });
         } else {
-            alert("Field to Update the request please contact the dev");
+            alert("Failed to Update the request please contact the dev");
         }
     }
 

@@ -1,4 +1,7 @@
 import React from 'react'
+import { Icon } from 'react-icons-kit'
+import {eyeOff} from 'react-icons-kit/feather/eyeOff'
+import {eye} from 'react-icons-kit/feather/eye'
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -22,6 +25,19 @@ function Login() {
     const [ password, setPassword ] = useState("");
 
     const navigate = useNavigate();
+
+    const [type, setType]=useState('password');
+    const [icon, setIcon]=useState(eyeOff)
+
+    const handleToggle=()=>{
+            if(type==='password'){
+                setIcon(eye);
+                setType('text');
+            }
+                else{
+                setIcon(eyeOff);
+                setType('password');
+            }}
 
     const Login = () => {
         const data = {username: username, password: password};
@@ -80,7 +96,8 @@ function Login() {
                 <div className="logInForm">
                 <img src={ logo } style={{ width: "6vw", height:  "6vw" }} className="logo" />
                 <img src={ logo2 } style={{  width: "5vw", height: "5vw" }} className="logo2" />
-                    <h1>LOG IN</h1>
+                    
+                    <h1>ADMIN</h1>
                     <input
                         className='username'
                         placeholder='Username'
@@ -89,14 +106,18 @@ function Login() {
                             setUsername(event.target.value);
                         }}
                     />
+                    
                     <input
                         className='password'
                         placeholder='Password'
-                        type="password"
+                        type={type}
                         onChange={(event) => {
                             setPassword(event.target.value);
                         }}
                     />
+
+                    <span onClick={handleToggle}><Icon icon={icon} size = {25}/></span>
+
                 </div>
                 <button type='submit' className='button' onClick={Login}>Login</button>
                 <ToastContainer

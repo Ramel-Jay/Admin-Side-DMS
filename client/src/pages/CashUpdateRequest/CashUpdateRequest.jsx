@@ -43,7 +43,7 @@ function CashUpdateRequest() {
             )
             .then((response) => {
                 if(response.data.error) {
-                    alert("Field to approve");
+                    alert("Failed to approve");
                 }else{
                     emailjs.send('service_3x1ks7h', 'template_2g3ikvp', templateParams, 'yNNQzsJGkNJ05bIey')
                         .then(function(response) {
@@ -56,7 +56,7 @@ function CashUpdateRequest() {
                 }
             });
         }   else {
-                alert("Field to update the request please contact the dev");
+                alert("Failed to update the request. Please contact the Dev.");
             }
     }
 
@@ -71,12 +71,12 @@ function CashUpdateRequest() {
             }, { withCredentials: true }
             ).then((response) => {
                 if(response.data.error){
-                    alert("Field to approve");
+                    alert("Failed to approve");
                 }else{
                     emailjs.send('service_3x1ks7h', 'template_je53q6d', templateParams, 'yNNQzsJGkNJ05bIey')
                     .then(function(response) {
                         setCashObject({ ...cashObject, request: disapproved, username: username });
-                        alert("request Disapprove");
+                        alert("Request Disapprove");
                         navigate("/cashdisapprove");
                     }, function(error) {
                         console.log('FAILED...', error);
@@ -84,7 +84,7 @@ function CashUpdateRequest() {
                 }
             });
         } else {
-            alert("Field to Update the request please contact the dev");
+            alert("Failed to Update the request. Please contact the Dev.");
         }
     }
 
