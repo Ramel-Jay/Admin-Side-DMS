@@ -7,7 +7,7 @@ import {
     Title,
     Tooltip,
     // Legend,
-  } from 'chart.js';
+} from 'chart.js';
 import { format } from 'date-fns';
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
@@ -19,7 +19,7 @@ import "./Dashboard.css";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
- 
+
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -202,7 +202,7 @@ function Dashboard() {
                 </div>
             </div>
 
-            <div style={{ marginTop: 40 }}>
+            <div style={{ marginTop: 40 }} className="graph-container">
                 <Bar options={options} data={getChartData()} />
             </div>
 

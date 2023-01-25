@@ -108,15 +108,15 @@ function Login() {
                     />
                     
                     <input
-                        className='password'
-                        placeholder='Password'
-                        type={type}
-                        onChange={(event) => {
-                            setPassword(event.target.value);
-                        }}
+                            className='password'
+                            placeholder='Password'
+                            type={type}
+                            onChange={(event) => {
+                                setPassword(event.target.value);
+                            }}
                     />
 
-                    <span onClick={handleToggle}><Icon icon={icon} size = {25}/></span>
+                        <span onClick={handleToggle}><Icon icon={icon} size = {25} className="aye-container"/></span>
 
                 </div>
                 <button type='submit' className='button' onClick={Login}>Login</button>
