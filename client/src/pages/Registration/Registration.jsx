@@ -16,6 +16,7 @@ function Registration() {
     const [email, setEmail] = useState("");
     const [number, setNumber] = useState("");
     const [adminType, setAdminType] = useState("");
+    const [image, setImage] = useState("null");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
@@ -32,6 +33,7 @@ function Registration() {
         data.append("email", email);
         data.append("number", number);
         data.append("adminType", adminType);
+        data.append("image", image);
         data.append("username", username);
         data.append("password", password);
 
@@ -133,6 +135,15 @@ function Registration() {
                             required
                         />
                         <label htmlFor='adminType'>Admin Type</label>
+                    </div>
+
+                    <div className="input-field">
+                        <input 
+                            type="file" 
+                            id="image"
+                            onChange={(event) => setImage(event.target.files[0])}
+                            required
+                        />
                     </div>
                     
                     
