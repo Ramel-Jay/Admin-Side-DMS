@@ -30,10 +30,6 @@ app.use("/inkind", inKindRouter);
 const adminRouter = require('./routes/Admin')
 app.use("/auth", adminRouter);
 
-//News Router
-const newsRouter = require('./routes/News')
-app.use("/news", newsRouter);
-
 //Home Router
 const homeRouter = require("./routes/Home")
 app.use("/home", homeRouter);

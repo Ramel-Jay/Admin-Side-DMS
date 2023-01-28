@@ -60,8 +60,6 @@ function Home(){
                             <Link to="/cashapprove" className='hideItem'>Cash Approve</Link>
                         </ul>
                     )}
-
-                    <button className='item' onClick={post}> Post </button>
                     
                     <button className='item' onClick={() => { seInKind(!inKind)}}> In Kind</button>
                     {inKind && (

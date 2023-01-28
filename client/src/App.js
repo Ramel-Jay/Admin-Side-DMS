@@ -5,7 +5,6 @@ import CashDisapprove from './pages/CashDisapprove/CashDisapprove';
 import CashApprove from "./pages/CashApprove/CashApprove";
 import Home from "./pages/Home/Home";
 import Dashboard from './pages/Dashboard/Dashboard';
-import Post from "./pages/Post";
 import InKindApprove from "./pages/InKindApprove/InKindApprove";
 import InKindDisapprove from "./pages/InKindDisapprove/InKindDisapprove";
 import InKindUpdateRequest from "./pages/InKindUpdateRequest/InKindUpdateRequest";
@@ -26,7 +25,6 @@ function App() {
           <Route path="/cashdisapprove" exact element={<CashDisapprove />} />
           <Route path="/cashupdaterequest/:id" exact element={<CashUpdateRequest />} />
           <Route path="/cashapprove" exact element={<CashApprove />} />
-          <Route path="/post" exact element={<Post />} />
           <Route path="/inkindapprove" exact element={<InKindApprove />} />
           <Route path="/inkinddisapprove" exact element={<InKindDisapprove/>}/>
           <Route path="/inkindupdaterequest/:id" exact element={<InKindUpdateRequest />}/>
