@@ -98,24 +98,24 @@ function Dashboard() {
 
     const getData = (data, label) => {
         const months = {
-            January: 0,
-            February: 0,
-            March: 0,
-            April: 0,
+            Jan: 0,
+            Feb: 0,
+            Mar: 0,
+            Apr: 0,
             May: 0,
-            June: 0,
-            July: 0,
-            August: 0,
-            September: 0,
-            October: 0,
-            November: 0,
-            December: 0,
+            Jun: 0,
+            Jul: 0,
+            Aug: 0,
+            Sep: 0,
+            Oct: 0,
+            Nov: 0,
+            Dec: 0,
         };
 
         if (data && data.length > 0) {
             data.forEach(post => {
                 // Check the month of createdAt field, convert date using date-fns https://date-fns.org/v2.14.0/docs/format
-                const monthName = format(new Date(post.createdAt), 'LLLL');
+                const monthName = format(new Date(post.createdAt), 'LLL');
 
                 if (Object.keys(months).includes(monthName)) {
                     months[monthName] += 1;
@@ -203,7 +203,7 @@ function Dashboard() {
             </div>
 
             <div style={{ marginTop: 40 }} className="graph-container">
-                <Bar options={options} data={getChartData()} />
+                <Bar options={options} data={getChartData()}  className="bar-graph"/>
             </div>
 
             <ToastContainer

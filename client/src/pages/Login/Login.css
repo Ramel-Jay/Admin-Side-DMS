@@ -108,9 +108,14 @@ h1{
 
 .aye-container{
     color: #ffffff;
-    background-color: rgb(0, 0, 0);
+    background-color: #3a3535;
     padding: 13px;
     border-radius: 0px 20px 20px 0px;
+}
+
+.aye-container:hover{
+    background-color: #00060e;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .username:focus {
@@ -144,6 +149,7 @@ h1{
 
 .button:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
+    background-color: red;
 }
 
 .input-field span {
