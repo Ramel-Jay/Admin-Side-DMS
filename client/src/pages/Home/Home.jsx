@@ -55,18 +55,22 @@ function Home(){
                     <button className="item" onClick={() => { setCash(!cash)}}>Cash</button>
                     {cash && (
                         <ul className="cashItems">
-                            <Link to="/cashdisapprove" className='hideItem'>Cash Disapprove</Link>
+                            <Link to="/cashdisapprove" className='hideItem'>Disapprove</Link>
                             <hr/>
-                            <Link to="/cashapprove" className='hideItem'>Cash Approve</Link>
+                            <Link to="/cashapprove" className='hideItem'>Approve</Link>
+                            <hr/>
+                            <Link to="/cashpending" className='hideItem'>Pending</Link>
                         </ul>
                     )}
                     
                     <button className='item' onClick={() => { seInKind(!inKind)}}> In Kind</button>
                     {inKind && (
                         <ul className="kindItems">
-                            <Link to="/inkindapprove" className='hideItem'>InKind Approve </Link>
+                            <Link to="/inkindapprove" className='hideItem'>Approve </Link>
                             <hr/>
-                            <Link to="/inkinddisapprove" className='hideItem'>InKind Disapprove </Link>
+                            <Link to="/inkinddisapprove" className='hideItem'>Disapprove </Link>
+                            <hr/>
+                            <Link to="/inkindpending" className='hideItem'> Pending </Link>
                         </ul>
                     )}
                     

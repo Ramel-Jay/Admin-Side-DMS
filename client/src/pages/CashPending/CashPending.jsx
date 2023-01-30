@@ -1,4 +1,3 @@
-import "./CashDisapprove.css";
 import React from 'react'
 import axios from 'axios';
 import { useEffect, useState } from "react";
@@ -8,7 +7,7 @@ import * as XLSX  from "xlsx";
 import { FaSearch } from "react-icons/fa";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 
-function CashDisapprove() {
+function CashPending() {
 
     const [listOfPost, setListOfPost] = useState([]);
     const [ searchId, setSearchId ] = useState("");
@@ -35,17 +34,17 @@ function CashDisapprove() {
         XLSX.writeFile(wb, "Cash_Disapprove_Table.xlsx");
     }
 
-    const items = listOfPost.filter((value) => value.request === false );
+    const items = listOfPost.filter((value) => value.username === "Pending");
     const countItems = items.length;
 
 return (
         <div>
             <Home/>
             <div className="pending-request-container">
-                <p style={{ paddingLeft:"2vw" }}>Disapprove Request: { countItems }</p>
+                <p style={{ paddingLeft:"2vw" }}>Pending Request: { countItems }</p>
             </div>
             <br></br>
-            <h2 className="headerTitle">CASH DISAPPROVE</h2>
+            <h2 className="headerTitle">CASH PENDING REQUEST</h2>
             <FaSearch className="search-icon"/>
             <input
                 type="text"
@@ -74,9 +73,9 @@ return (
                         {
                             listOfPost.filter((value) => {
                                 if( searchId === "" ){
-                                    return value.request === false;
+                                    return value.username === "Pending";
                                 }else if (value.firstName.toLowerCase().includes(searchId.toLowerCase().trim())){
-                                    return value.request === false;
+                                    return value.username === "Pending";
                                 }
                             }).map((value, key)=>{
                                 return (
@@ -100,4 +99,4 @@ return (
 )
 }
 
-export default CashDisapprove
+export default CashPending

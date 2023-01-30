@@ -9,6 +9,8 @@ import InKindApprove from "./pages/InKindApprove/InKindApprove";
 import InKindDisapprove from "./pages/InKindDisapprove/InKindDisapprove";
 import InKindUpdateRequest from "./pages/InKindUpdateRequest/InKindUpdateRequest";
 import Registration from "./pages/Registration/Registration";
+import CashPending from "./pages/CashPending/CashPending";
+import InKindPending from "./pages/InKindPending/InKindPending";
 import Login from "./pages/Login/Login";
 import InvalidRoute from "./pages/InvalidRoute";
 import LogOut from "./pages/LogOut";
@@ -29,6 +31,8 @@ function App() {
           <Route path="/inkinddisapprove" exact element={<InKindDisapprove/>}/>
           <Route path="/inkindupdaterequest/:id" exact element={<InKindUpdateRequest />}/>
           <Route path="/registration" exact element={<Registration />}/>
+          <Route path="/cashpending" exact element={<CashPending/>} />
+          <Route path="/inkindpending" exact element={<InKindPending/> } />
           <Route path="/logout" exact element={<LogOut />}/>
           <Route path="/login" exact element={<Login />}/>
           <Route path="/dashboard" exact element={<Dashboard />} />
