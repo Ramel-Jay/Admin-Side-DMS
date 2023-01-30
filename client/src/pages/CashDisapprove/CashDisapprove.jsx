@@ -46,7 +46,7 @@ return (
             </div>
             <br></br>
             <h2 className="headerTitle">CASH DISAPPROVE</h2>
-            <FaSearch className="searchIcon"/>
+            <FaSearch className="search-icon"/>
             <input
                 type="text"
                 placeholder="Search First Name..."

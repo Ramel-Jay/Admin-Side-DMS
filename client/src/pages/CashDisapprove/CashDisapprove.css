@@ -19,13 +19,15 @@
     text-align: center;
 }
 
-
-.searchIcon{
-    padding: 1vw 1.5vw 1vw 3vw;
-    background-color: gray;
-    font-size: 2vw;
-    top: 5vw;
-    position: absolute;
+.search-icon{
+    top: 55px;
+    position: relative;
+    background-color: grey;
+    width: 60px;
+    height: 40px;
+    padding: 10px;
+    color: white;
+    border-radius: 0px 10px 10px 0px;
 }
 
 .searchDonator{

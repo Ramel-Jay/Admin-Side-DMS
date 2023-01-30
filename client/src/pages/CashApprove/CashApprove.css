@@ -19,14 +19,6 @@
     text-align: center;
 }
 
-.searchIcon{ 
-    padding: 1vw 1.5vw 1vw 3vw;
-    background-color: #232121;
-    font-size: 2vw;
-    top: 7vw;
-    position: absolute;
-    color: #ffffff;
-}
 
 .searchDonator{
     font-family: "Poppins-Regular";

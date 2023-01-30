@@ -44,7 +44,7 @@ function Registration() {
                 alert("Invalid Input");
             }else{
                 alert("Registration Complete");
-                navigate("/");
+                navigate("/dashboard");
             }
         });
     };
