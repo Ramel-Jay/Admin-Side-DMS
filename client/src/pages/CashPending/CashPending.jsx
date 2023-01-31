@@ -84,7 +84,7 @@ return (
                                         <td>{value.lastName}</td>
                                         <td>{value.amount}</td>
                                         <td>{value.transactionID}</td>
-                                        <td>{value.request}Disapprove</td>
+                                        <td>{value.request}Pending</td>
                                         <td>{value.username}</td>
                                         <td type='submit' onClick={() => {navigate(`/cashupdaterequest/${value.id}`)}}><BsFillCheckCircleFill  type='submit' onClick={() => {navigate(`/cashupdaterequest/${value.id}`)}}/></td>
                                     </tr>

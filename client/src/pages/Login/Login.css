@@ -106,14 +106,14 @@ h1{
     margin-top: 1.2vw;
 }
 
-.aye-container{
+.eye-container{
     color: #ffffff;
     background-color: #3a3535;
-    padding: 13px;
+    padding: 17px;
     border-radius: 0px 20px 20px 0px;
 }
 
-.aye-container:hover{
+.eye-container:hover{
     background-color: #00060e;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }

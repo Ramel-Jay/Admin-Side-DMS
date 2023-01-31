@@ -85,7 +85,7 @@ function InKindPending() {
                                     <td>{value.quantity}</td>
                                     <td>{value.rName}</td>
                                     <td>{value.rNum}</td>
-                                    <td>{value.request}Disapprove</td>
+                                    <td>{value.request}Pending</td>
                                     <td>{value.username}</td>
                                     <td><BsFillCheckCircleFill type="submit" onClick={() => {navigate(`/inkindupdaterequest/${value.id}`)}}/></td>
                                 </tr>

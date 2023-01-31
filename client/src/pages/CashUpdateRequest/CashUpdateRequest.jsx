@@ -109,11 +109,18 @@ function CashUpdateRequest() {
     }
 
     function btnBack() {
-        if(cashObject.request === false){
-            navigate("/cashdisapprove");
-        }else if (cashObject.request === true){
+        if (cashObject.username === "Pending"){
+            navigate("/cashpending");
+        }
+        
+        else if (cashObject.request === true){
             navigate("/cashapprove");
         }
+        
+        else if(cashObject.request === false){
+            navigate("/cashdisapprove");
+        }
+
     }
 
     return (

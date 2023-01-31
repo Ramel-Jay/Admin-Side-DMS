@@ -39,7 +39,7 @@ function InKindDisapprove() {
         <>
             <Home/>
             <div className="pending-request-container">
-                <p style={{ paddingLeft:"2vw" }}>Pending Request: { countedItems }</p>
+                <p style={{ paddingLeft:"2vw" }}>Disapprove Request: { countedItems }</p>
             </div>
             <br></br>
             <h2 className="headerTitle">IN KIND DISAPPROVE</h2>

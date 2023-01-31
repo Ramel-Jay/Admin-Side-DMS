@@ -85,7 +85,7 @@ function InKindRequestApprove() {
                 }
             });
         } else {
-            alert("Field to Update the request please contact the dev");
+            alert("Failed to Update the request please contact the dev");
         }
     }
 
@@ -110,10 +110,16 @@ function InKindRequestApprove() {
     }
 
     function btnBack() {
-        if(inKindObject.request === false){
-            navigate("/inkinddisapprove");
-        }else if (inKindObject.request === true){
+        if (inKindObject.username === "Pending"){
+            navigate("/inkindpending");
+        }
+
+        else if (inKindObject.request === true){
             navigate("/inkindapprove");
+        }
+
+        else if(inKindObject.request === false){
+            navigate("/inkinddisapprove");
         }
     }
 

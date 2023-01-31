@@ -116,7 +116,7 @@ function Login() {
                             }}
                     />
 
-                        <span onClick={handleToggle}><Icon icon={icon} size = {25} className="aye-container"/></span>
+                        <span onClick={handleToggle}><Icon icon={icon} size = {25} className="eye-container"/></span>
 
                 </div>
                 <button type='submit' className='button' onClick={Login}>Login</button>

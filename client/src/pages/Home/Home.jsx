@@ -35,10 +35,6 @@ function Home(){
         navigate("/dashboard");
     }
 
-    function post(){
-        navigate("/post");
-    }
-
     function register(){
         navigate("/registration");
     }
@@ -55,9 +51,9 @@ function Home(){
                     <button className="item" onClick={() => { setCash(!cash)}}>Cash</button>
                     {cash && (
                         <ul className="cashItems">
-                            <Link to="/cashdisapprove" className='hideItem'>Disapprove</Link>
-                            <hr/>
                             <Link to="/cashapprove" className='hideItem'>Approve</Link>
+                            <hr/>
+                            <Link to="/cashdisapprove" className='hideItem'>Disapprove</Link>
                             <hr/>
                             <Link to="/cashpending" className='hideItem'>Pending</Link>
                         </ul>
