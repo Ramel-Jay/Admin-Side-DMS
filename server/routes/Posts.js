@@ -3,6 +3,13 @@ const router = express.Router();
 const { Cash, sequelize } = require('../models');
 const { validateToken } = require("../middleware/JWT");
 
+//Post Donate Cash
+router.post("/",  async(req, res) => {
+    const cash = req.body;
+    await Cash.create(cash);
+
+    res.json(cash);
+});
 
 router.get("/",validateToken ,async (req, res) => {
     const listOfPost = await Cash.findAll({

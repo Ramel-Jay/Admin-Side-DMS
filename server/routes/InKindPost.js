@@ -3,6 +3,14 @@ const router = express.Router();
 const { InKind, sequelize } = require('../models');
 const { validateToken } = require("../middleware/JWT");
 
+//Post Donate InKind
+router.post("/", async(req, res) => {
+    const inkind = req.body;
+    await InKind.create(inkind);
+
+    res.json(inkind);
+});
+
 router.get("/", validateToken,async (req, res) => {
     const listOfInKindPost = await InKind.findAll({
         where: sequelize.where(sequelize.fn('YEAR', sequelize.col('createdAt')), new Date().getFullYear())
