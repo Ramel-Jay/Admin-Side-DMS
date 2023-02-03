@@ -50,6 +50,7 @@
 }
 
 .card:active{
+  color: white;
   background-color: #f22;
 }
 

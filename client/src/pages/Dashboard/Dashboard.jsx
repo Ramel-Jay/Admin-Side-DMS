@@ -42,7 +42,7 @@ const options = {
     }
 };
 
-function Dashboard() {
+function Dashboard({data}) {
 
     const [cashList, setCashList] = useState([]);
 
@@ -144,7 +144,6 @@ function Dashboard() {
                 return getData(inKindDisApprove, 'In Kind Disapprove');
             default:
                 return getData(cashApprove, 'Cash Approve');
-
         }
     };
 
