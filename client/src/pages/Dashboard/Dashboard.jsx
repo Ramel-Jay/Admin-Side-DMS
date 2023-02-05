@@ -2,11 +2,8 @@ import {
     Chart as ChartJS,
     CategoryScale,
     LinearScale,
-    PointElement,
     BarElement,
-    Title,
     Tooltip,
-    // Legend,
 } from 'chart.js';
 import { format } from 'date-fns';
 import React from 'react';
@@ -23,23 +20,38 @@ import 'react-toastify/dist/ReactToastify.css';
 ChartJS.register(
     CategoryScale,
     LinearScale,
-    PointElement,
     BarElement,
-    Title,
     Tooltip,
-    // Legend
 );
+
+const formatAmount = (amount) => Number(amount).toLocaleString('en-PH', {
+    style: 'currency',
+    currency: 'PHP'
+});
 
 const options = {
     responsive: true,
-    plugins: {
-        legend: {
-            position: 'top',
-        },
-    },
     ticks: {
-        precision:0
-    }
+        precision: 0
+    },
+    plugins: {
+        tooltip: {
+          callbacks: {
+            label: (yDatapoint) => {
+                const data = yDatapoint.dataset?.data[yDatapoint.dataIndex];
+
+                if (data?.amount && data?.count) {
+                    return [
+                        `${yDatapoint.dataset?.label}: ${data.count}`,
+                        `Total Amount: ${formatAmount(data.amount)}`
+                    ];
+                }
+
+                return null;
+            },
+          }
+        }
+    },
 };
 
 function Dashboard() {
@@ -50,7 +62,7 @@ function Dashboard() {
 
     const [activeTab, setActiveTab] = useState('cash-approve');
 
-    const [total, setTotal] = useState([]);
+    // const [total, setTotal] = useState([]);
 
     // const handleClick = () => {
     //     let sum = 0;
@@ -72,15 +84,15 @@ function Dashboard() {
     //     setTotal(sum);
     // };
 
-    useEffect(() => {
-        let sum = 0;
-        cashList.forEach(item => {
-            if(item.request === true){
-                sum += item.amount;
-            }
-        });
-        setTotal(sum);
-    })
+    // useEffect(() => {
+    //     let sum = 0;
+    //     cashList.forEach(item => {
+    //         if(item.request === true){
+    //             sum += item.amount;
+    //         }
+    //     });
+    //     setTotal(sum);
+    // }, [])
 
     useEffect(() => {
         axios.get("http://localhost:3001/cash", { withCredentials: true }).then((response) => {
@@ -130,18 +142,54 @@ function Dashboard() {
 
     const getData = (data, label) => {
         const months = {
-            Jan: 0,
-            Feb: 0,
-            Mar: 0,
-            Apr: 0,
-            May: 0,
-            Jun: 0,
-            Jul: 0,
-            Aug: 0,
-            Sep: 0,
-            Oct: 0,
-            Nov: 0,
-            Dec: 0,
+            Jan: {
+                count: 0,
+                amount: 0,
+            },
+            Feb: {
+                count: 0,
+                amount: 0,
+            },
+            Mar: {
+                count: 0,
+                amount: 0,
+            },
+            Apr: {
+                count: 0,
+                amount: 0,
+            },
+            May: {
+                count: 0,
+                amount: 0,
+            },
+            Jun: {
+                count: 0,
+                amount: 0,
+            },
+            Jul: {
+                count: 0,
+                amount: 0,
+            },
+            Aug: {
+                count: 0,
+                amount: 0,
+            },
+            Sep: {
+                count: 0,
+                amount: 0,
+            },
+            Oct: {
+                count: 0,
+                amount: 0,
+            },
+            Nov: {
+                count: 0,
+                amount: 0,
+            },
+            Dec: {
+                count: 0,
+                amount: 0,
+            },
         };
 
         if (data && data.length > 0) {
@@ -150,11 +198,12 @@ function Dashboard() {
                 const monthName = format(new Date(post.createdAt), 'LLL');
 
                 if (Object.keys(months).includes(monthName)) {
-                    months[monthName] += 1;
+                    months[monthName].count += 1;
+                    months[monthName].amount += post.amount;
                 }
             });
         }
-        
+
         return {
             labels: Object.keys(months),
             datasets: [{
@@ -162,6 +211,10 @@ function Dashboard() {
                 data: Object.values(months || []),
                 borderColor: 'black',
                 backgroundColor: 'blue',
+                parsing: {
+                    xAxisKey: 'count',
+                    yAxisKey: 'count'
+                },
             }],
         }
     };
@@ -179,6 +232,19 @@ function Dashboard() {
         }
     };
 
+    const getTotalAmount = () => {
+        switch (activeTab) {
+            case 'cash-disapprove':
+                return formatAmount(cashDisapprove.reduce((sum, data) => sum + data.amount, 0));
+            case 'inkind-approve':
+                return formatAmount(inKindApprove.reduce((sum, data) => sum + data.amount, 0));
+            case 'inkind-disapprove':
+                return formatAmount(inKindDisApprove.reduce((sum, data) => sum + data.amount, 0));
+            default:
+                return formatAmount(cashApprove.reduce((sum, data) => sum + data.amount, 0));
+        }
+    };
+
     return (
         <div>
             <Home/>
@@ -191,7 +257,7 @@ function Dashboard() {
                         style={{ border: activeTab === 'cash-approve' ? '2px solid blue' : 'none' }}
                     >
                     <h3 className="cardHeader">CASH APPROVED: </h3>
-                    <p className="count">{ countCashApprove }</p>   
+                    <p className="count">{ countCashApprove }</p>
                     </div>
                 </div>
 
@@ -237,7 +303,7 @@ function Dashboard() {
             </div>
 
             {/* <button onClick={handleClick}>Calculate Total</button> */}
-            <p>Total Cash Approve: {total}</p>
+            <p>Total Cash Approve: {getTotalAmount()}</p>
 
             <ToastContainer
                 position="top-center"
