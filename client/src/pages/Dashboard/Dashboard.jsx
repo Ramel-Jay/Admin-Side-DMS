@@ -142,19 +142,19 @@ function Dashboard() {
 
     const getData = (data, label) => {
         const months = {
-            January: {
+            Jan: {
                 count: 0,
                 amount: 0,
             },
-            February: {
+            Feb: {
                 count: 0,
                 amount: 0,
             },
-            March: {
+            Mar: {
                 count: 0,
                 amount: 0,
             },
-            April: {
+            Apr: {
                 count: 0,
                 amount: 0,
             },
@@ -162,31 +162,31 @@ function Dashboard() {
                 count: 0,
                 amount: 0,
             },
-            June: {
+            Jun: {
                 count: 0,
                 amount: 0,
             },
-            July: {
+            Jul: {
                 count: 0,
                 amount: 0,
             },
-            August: {
+            Aug: {
                 count: 0,
                 amount: 0,
             },
-            September: {
+            Sep: {
                 count: 0,
                 amount: 0,
             },
-            October: {
+            Oct: {
                 count: 0,
                 amount: 0,
             },
-            November: {
+            Nov: {
                 count: 0,
                 amount: 0,
             },
-            December: {
+            Dec: {
                 count: 0,
                 amount: 0,
             },
@@ -195,7 +195,7 @@ function Dashboard() {
         if (data && data.length > 0) {
             data.forEach(post => {
                 // Check the month of createdAt field, convert date using date-fns https://date-fns.org/v2.14.0/docs/format
-                const monthName = format(new Date(post.createdAt), 'LLLL');
+                const monthName = format(new Date(post.createdAt), 'LLL');
 
                 if (Object.keys(months).includes(monthName)) {
                     months[monthName].count += 1;
