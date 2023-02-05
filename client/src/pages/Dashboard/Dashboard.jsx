@@ -42,13 +42,45 @@ const options = {
     }
 };
 
-function Dashboard({data}) {
+function Dashboard() {
 
     const [cashList, setCashList] = useState([]);
 
     const [inKindList, setInKindList] = useState([]);
 
     const [activeTab, setActiveTab] = useState('cash-approve');
+
+    const [total, setTotal] = useState([]);
+
+    // const handleClick = () => {
+    //     let sum = 0;
+    //     cashList.forEach(item => {
+    //         if(item.request === true){
+    //             sum += item.amount;
+    //         }
+    //     });
+    //     setTotal(sum);
+    // };
+
+    // const handleClick = () => {
+    //     let sum = 0;
+    //     cashList.forEach(item => {
+    //         if(item.request === true){
+    //             sum += item.amount;
+    //         }
+    //     });
+    //     setTotal(sum);
+    // };
+
+    useEffect(() => {
+        let sum = 0;
+        cashList.forEach(item => {
+            if(item.request === true){
+                sum += item.amount;
+            }
+        });
+        setTotal(sum);
+    })
 
     useEffect(() => {
         axios.get("http://localhost:3001/cash", { withCredentials: true }).then((response) => {
@@ -143,14 +175,13 @@ function Dashboard({data}) {
             case 'inkind-disapprove':
                 return getData(inKindDisApprove, 'In Kind Disapprove');
             default:
-                return getData(cashApprove, 'Cash Approve');
+                return getData(cashApprove, 'Cash Approved');
         }
     };
 
     return (
         <div>
             <Home/>
-
             <div className="row">
                 <div className="column">
                     <div
@@ -159,8 +190,8 @@ function Dashboard({data}) {
                         id="cash-approve"
                         style={{ border: activeTab === 'cash-approve' ? '2px solid blue' : 'none' }}
                     >
-                    <h3 className="cardHeader">CASH APPROVE: </h3>
-                    <p className="count">{ countCashApprove }</p>
+                    <h3 className="cardHeader">CASH APPROVED: </h3>
+                    <p className="count">{ countCashApprove }</p>   
                     </div>
                 </div>
 
@@ -204,6 +235,9 @@ function Dashboard({data}) {
             <div style={{ marginTop: 40 }} className="graph-container">
                 <Bar options={options} data={getChartData()}  className="bar-graph"/>
             </div>
+
+            {/* <button onClick={handleClick}>Calculate Total</button> */}
+            <p>Total Cash Approve: {total}</p>
 
             <ToastContainer
                 position="top-center"
