@@ -14,6 +14,8 @@ function CashApprove() {
 
     const [ searchId, setSearchId ] = useState("");
 
+    // const [total, setTotal] = useState([]);
+
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -40,6 +42,16 @@ function CashApprove() {
     const countItems = items.length;
 
 
+        // useEffect(() => {
+        //     let sum = 0;
+        //     listOfPost.forEach(item => {
+        //         if(item.request === true){
+        //             sum += item.amount;
+        //         }
+        //     });
+        //     setTotal(sum);
+        // }, [])
+
 return (
     <div>
         <Home/>
@@ -61,6 +73,7 @@ return (
             <table className="tblRequest" style={{ maxWidth:"100%" }}>
                 <thead>
                     <tr>
+                        <th>Classification</th>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Amount</th>
@@ -81,6 +94,7 @@ return (
                         }).map((value, key)=>{
                             return (
                                 <tr key={key}>
+                                    <td>{value.type}</td>
                                     <td>{value.firstName}</td>
                                     <td>{value.lastName}</td>
                                     <td>{value.amount}</td>
@@ -95,6 +109,7 @@ return (
                 </tbody>
             </table>
         </div>
+        {/* <p>Total Cash Approve: {total}</p> */}
             <button onClick={download} className="btnDownload">Download</button>
     </div>
 )

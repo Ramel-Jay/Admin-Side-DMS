@@ -108,6 +108,14 @@ function CashUpdateRequest() {
         }
     }
 
+    // function button(){
+    //     if(cashObject.request === false){
+    //         return <button onClick={() => {ApproveRequest("approve")}} className="btnApprove"><BsFillCheckCircleFill/> Approve</button>
+    //     }else if (cashObject.request === true){
+    //         return <button onClick={() => {DisapproveRequest("disapprove")}} className="btnDisapprove"><IoMdCloseCircle/> Disapprove</button>
+    //     }
+    // }
+
     function btnBack() {
         if (cashObject.username === "Pending"){
             navigate("/cashpending");
@@ -170,6 +178,7 @@ function CashUpdateRequest() {
                         <h3 className="donateInfo">{formatDate(new Date(cashObject.createdAt))}</h3>
 
                     <div className="donateFooter">
+                        {/* {button()} */}
                         <button onClick={() => {ApproveRequest("approve")}} className="btnApprove"><BsFillCheckCircleFill/> Approve</button>
                         <button onClick={() => {DisapproveRequest("disapprove")}} className="btnDisapprove"><IoMdCloseCircle/> Disapprove</button>
                     </div>

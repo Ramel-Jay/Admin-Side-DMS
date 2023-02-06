@@ -8,6 +8,7 @@ import * as XLSX  from "xlsx";
 import { FaSearch } from "react-icons/fa";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 
+
 function CashDisapprove() {
 
     const [listOfPost, setListOfPost] = useState([]);
@@ -61,6 +62,7 @@ return (
                 <table className="tblRequest">
                     <thead>
                         <tr>
+                            <th>Classification</th>
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Amount</th>
@@ -81,6 +83,7 @@ return (
                             }).map((value, key)=>{
                                 return (
                                     <tr key={key}>
+                                        <th>{value.type}</th>
                                         <td>{value.firstName}</td>
                                         <td>{value.lastName}</td>
                                         <td>{value.amount}</td>
