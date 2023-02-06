@@ -89,7 +89,7 @@ function InKindApprove(){
                                     <td>{value.rNum}</td>
                                     <td>{value.request}Approve</td>
                                     <td>{value.username}</td>
-                                    <td><BsFillCheckCircleFill type='submit' onClick={() => {navigate(`/inkindupdaterequest/${value.id}`)}}/></td>
+                                    <td onClick={() => {navigate(`/inkindupdaterequest/${value.id}`)}}><BsFillCheckCircleFill type='submit' onClick={() => {navigate(`/inkindupdaterequest/${value.id}`)}}/></td>
                                 </tr>
                             )
                         })
