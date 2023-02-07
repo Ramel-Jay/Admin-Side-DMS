@@ -83,7 +83,7 @@ return (
                             }).map((value, key)=>{
                                 return (
                                     <tr key={key}>
-                                        <th>{value.type}</th>
+                                        <td>{value.type}</td>
                                         <td>{value.firstName}</td>
                                         <td>{value.lastName}</td>
                                         <td>{value.amount}</td>

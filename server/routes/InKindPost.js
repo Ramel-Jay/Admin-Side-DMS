@@ -5,10 +5,14 @@ const { validateToken } = require("../middleware/JWT");
 
 //Post Donate InKind
 router.post("/", async(req, res) => {
+    try{
     const inkind = req.body;
     await InKind.create(inkind);
 
     res.json(inkind);
+    }catch(err){
+        res.json("Duplicate Entry")
+    }
 });
 
 router.get("/", validateToken,async (req, res) => {

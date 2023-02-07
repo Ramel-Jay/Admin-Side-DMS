@@ -110,15 +110,6 @@ function Dashboard() {
             if(response.data.error){
                 navigate("/login");
             }else{
-                toast.success('User Authenticated', {
-                    position: "top-center",
-                    autoClose: 2000,
-                    hideProgressBar: true,
-                    closeOnClick: false,
-                    pauseOnHover: false,
-                    draggable: false,
-                    theme: "colored",
-                });
                 setInKindList(response.data);
             }
         });
@@ -304,19 +295,6 @@ function Dashboard() {
 
             {/* <button onClick={handleClick}>Calculate Total</button> */}
             <p>Total Cash Approve: {getTotalAmount()}</p>
-
-            <ToastContainer
-                position="top-center"
-                autoClose={2000}
-                hideProgressBar={true}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="colored"
-            />
         </div>
     )
 }

@@ -39,6 +39,20 @@ function Login() {
                 setType('password');
             }}
 
+    const notif = () => {
+        toast.success('User Authenticated', {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            
+        });
+        navigate("/dashboard");
+    }
+
     const Login = () => {
         const data = {username: username, password: password};
         axios.post("http://localhost:3001/auth/login", data, {withCredentials: true}).then((response) => {
@@ -54,7 +68,7 @@ function Login() {
                 });
                 navigate("/login");
             }else {
-                navigate("/dashboard");
+                notif();
             }
         });
     };
