@@ -5,10 +5,14 @@ const { validateToken } = require("../middleware/JWT");
 
 //Post Donate Cash
 router.post("/",  async(req, res) => {
-    const cash = req.body;
-    await Cash.create(cash);
+    try{
+        const cash = req.body;
+        await Cash.create(cash);
 
-    res.json(cash);
+        res.json(cash);
+    }catch{
+        res.json("Duplicate Entry");
+    }
 });
 
 router.get("/",validateToken ,async (req, res) => {

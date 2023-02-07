@@ -15,10 +15,12 @@ module.exports = (sequelize, DataType) => {
         email: {
             type: DataType.STRING,
             allowNull: false,
+            unique: true,
         },
         number: {
             type: DataType.BIGINT,
             allowNull: false,
+            unique: true,
         },
         address: {
             type: DataType.STRING,
@@ -35,6 +37,7 @@ module.exports = (sequelize, DataType) => {
         transactionID: {
             type: DataType.BIGINT,
             allowNull: false,
+            unique: true,
         },
         request: {
             type: DataType.BOOLEAN,
