@@ -36,7 +36,12 @@ function CashDisapprove() {
         XLSX.writeFile(wb, "Cash_Disapprove_Table.xlsx");
     }
 
-    const items = listOfPost.filter((value) => value.request === false );
+    const items = listOfPost.filter((value) => {
+        if (searchId) {
+            return value.firstName.toLowerCase().includes(searchId.toLowerCase().trim());
+        }
+        return value.request === false && value.username !== 'Pending'
+    });
     const countItems = items.length;
 
 return (
@@ -55,7 +60,7 @@ return (
                     setSearchId(event.target.value);
                 }}
                 className="searchDonator"
-                
+
             />
 
             <div style={{ overflow:"scroll", maxHeight:"28vw" }}>
@@ -74,13 +79,9 @@ return (
                     </thead>
                     <tbody className="tblBody">
                         {
-                            listOfPost.filter((value) => {
-                                if( searchId === "" ){
-                                    return value.request === false;
-                                }else if (value.firstName.toLowerCase().includes(searchId.toLowerCase().trim())){
-                                    return value.request === false;
-                                }
-                            }).map((value, key)=>{
+                            items.map((value, key) => {
+                                const handleClickUpdate = () => navigate(`/cashupdaterequest/${value.id}`);
+
                                 return (
                                     <tr key={key}>
                                         <td>{value.type}</td>
@@ -90,9 +91,11 @@ return (
                                         <td>{value.transactionID}</td>
                                         <td>{value.request}Disapprove</td>
                                         <td>{value.username}</td>
-                                        <td type='submit' onClick={() => {navigate(`/cashupdaterequest/${value.id}`)}}><BsFillCheckCircleFill  type='submit' onClick={() => {navigate(`/cashupdaterequest/${value.id}`)}}/></td>
+                                        <td onClick={handleClickUpdate}>
+                                            <BsFillCheckCircleFill  />
+                                        </td>
                                     </tr>
-                                )
+                                );
                             })
                         }
                     </tbody>

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import axios from 'axios';
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { IoMdCloseCircle } from "react-icons/io";
-import "./CashUpdateRequest.css"; 
+import "./CashUpdateRequest.css";
 import { FaArrowCircleLeft } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import emailjs from 'emailjs-com';
@@ -23,7 +23,7 @@ function CashUpdateRequest() {
             setCashObject(response.data);
         }
         });
-    });
+    }, []);
 
     const templateParams = {
         subject: "ACLC College of Tacloban",
@@ -116,20 +116,7 @@ function CashUpdateRequest() {
     //     }
     // }
 
-    function btnBack() {
-        if (cashObject.username === "Pending"){
-            navigate("/cashpending");
-        }
-        
-        else if (cashObject.request === true){
-            navigate("/cashapprove");
-        }
-        
-        else if(cashObject.request === false){
-            navigate("/cashdisapprove");
-        }
-
-    }
+    const handleClickBack = () => navigate(-1);
 
     return (
         <div>
@@ -137,7 +124,7 @@ function CashUpdateRequest() {
                 <div className="donateForm">
 
                 <div className='donateHeader'>
-                    <FaArrowCircleLeft onClick={() => {btnBack()}} className="returnTo"/>
+                    <FaArrowCircleLeft onClick={handleClickBack} className="returnTo"/>
                     <h2>DONATOR INFORMATION</h2>
                 </div>
 
@@ -158,16 +145,16 @@ function CashUpdateRequest() {
 
                     <label className="donateLabel">Gender: </label>
                         <h3 className="donateInfo">{cashObject.gender}</h3>
-                    
+
                     <label className="donateLabel">Amount: </label>
                         <h3 className="donateInfo">{cashObject.amount}</h3>
-                    
+
                     <label className="donateLabel">Transaction ID: </label>
                         <h3 className="donateInfo">{cashObject.transactionID}</h3>
 
                     <label className="donateLabel">Updated By: </label>
                         <h3 className="donateInfo">{cashObject.username}</h3>
-                    
+
                     <label className="donateLabel">Updated At: </label>
                         <h3 className="donateInfo">{formatDate(new Date(cashObject.updatedAt))}</h3>
 
