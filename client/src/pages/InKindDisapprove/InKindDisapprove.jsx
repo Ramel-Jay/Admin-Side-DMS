@@ -32,7 +32,12 @@ function InKindDisapprove() {
         XLSX.writeFile(wb, "Cash_Disapprove_Table.xlsx");
     }
 
-    const items = listOfPosts.filter((value) => value.request === false);
+    const items = listOfPosts.filter((value) => {
+        if (searchId) {
+            return value.firstName.toLowerCase().includes(searchId.toLowerCase().trim());
+        }
+        return value.request === false && value.username !== 'Pending'
+    });
     const countedItems = items.length;
 
     return(
@@ -71,13 +76,8 @@ function InKindDisapprove() {
                 </thead>
                 <tbody>
                     {
-                        listOfPosts.filter((value) => {
-                            if( searchId === "" ){
-                                return value.request === false;
-                            }else if (value.firstName.toLowerCase().includes(searchId.toLowerCase().trim())){
-                                return value.request === false;
-                            }
-                        }).map((value, key) => {
+                        items.map((value, key) => {
+                            const handleClickUpdate = () => navigate(`/cashupdaterequest/${value.id}`);
                             return (
                                 <tr key={key}>
                                     <td>{value.classification}</td>
@@ -89,7 +89,9 @@ function InKindDisapprove() {
                                     <td>{value.rNum}</td>
                                     <td>{value.request}Disapprove</td>
                                     <td>{value.username}</td>
-                                    <td onClick={() => {navigate(`/inkindupdaterequest/${value.id}`)}}><BsFillCheckCircleFill type="submit" onClick={() => {navigate(`/inkindupdaterequest/${value.id}`)}}/></td>
+                                    <td onClick={() => handleClickUpdate}>
+                                        <BsFillCheckCircleFill type="submit" onClick={() => handleClickUpdate}/>
+                                    </td>
                                 </tr>
                             )
                         })
