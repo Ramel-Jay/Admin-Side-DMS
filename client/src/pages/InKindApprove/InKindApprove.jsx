@@ -59,12 +59,13 @@ function InKindApprove(){
             <table className='tblRequest'>
                 <thead>
                     <tr>
+                        <th>Classification</th>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Type</th>
                         <th>Quantity</th>
-                        <th>Rider Name</th>
-                        <th>Rider Number</th>
+                        <th>Courier Name</th>
+                        <th>Tracking Number</th>
                         <th>Status</th>
                         <th>Approve By</th>
                         <th>Edit</th>
@@ -81,6 +82,7 @@ function InKindApprove(){
                         }).map((value, key) => {
                             return (
                                 <tr key={key}>
+                                    <td>{value.classification}</td>
                                     <td>{value.firstName}</td>
                                     <td>{value.lastName}</td>
                                     <td>{value.type}</td>

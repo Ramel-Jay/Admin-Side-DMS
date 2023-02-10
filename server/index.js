@@ -35,7 +35,7 @@ const homeRouter = require("./routes/Home")
 app.use("/home", homeRouter);
 
 db.sequelize.sync().then(() => {
-    app.listen(3001, () => {
+    app.listen(process.env.PORT || 3001, () => {
         console.log("listening on port 3001");
     });
 });

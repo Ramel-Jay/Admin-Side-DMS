@@ -131,6 +131,10 @@ function InKindRequestApprove() {
                         <FaArrowCircleLeft onClick={() => {btnBack()}} className="returnTo"/>
                         <h2>DONATOR INFORMATION</h2>
                     </div>
+
+                        <label className="donateLabel">Classification: </label>
+                            <h3 className="donateInfo">{inKindObject.classification}</h3>
+
                         <label className="donateLabel">First Name: </label>
                             <h3 className="donateInfo">{inKindObject.firstName}</h3>
                         
@@ -155,10 +159,10 @@ function InKindRequestApprove() {
                         <label className="donateLabel">Amount: </label>
                             <h3 className="donateInfo">{inKindObject.amount}</h3>
 
-                        <label className="donateLabel">Rider's Name: </label>
+                        <label className="donateLabel">Courier Name: </label>
                             <h3 className="donateInfo">{inKindObject.rName}</h3>
 
-                        <label className="donateLabel">Rider's Phone Number: </label>
+                        <label className="donateLabel">Tracking Number: </label>
                             <h3 className="donateInfo">{inKindObject.rNum}</h3>
                             
                         <label className="donateLabel">Updated By: </label>
